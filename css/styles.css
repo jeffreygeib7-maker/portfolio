@@ -1,0 +1,98 @@
+/*
+  Author: Jeffrey Geib
+  Date: 2025-09-24
+  File: css/styles.css
+  Description: Shared external stylesheet controlling typography, colors, layout, nav, and images.
+*/
+
+/* ========== Base / Resets ========== */
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  padding: 0 1rem;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0f172a;                 /* text color */
+  background: #f8fafc;            /* page background */
+  line-height: 1.6;
+}
+
+/* ========== Layout shells (IDs) ========== */
+#site-header, #primary-nav, #content, #site-footer {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#site-header {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+
+.site-title {                 /* class selector */
+  margin: .25rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.tagline { margin: 0; color: #475569; }
+
+/* ========== Navigation (styled UL) ========== */
+.nav {                         /* class on <ul> */
+  list-style: none;
+  margin: .75rem 0 2rem;
+  padding: 0;
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav a {                       /* element selector */
+  display: inline-block;
+  text-decoration: none;
+  color: #0f172a;
+  padding: .5rem .9rem;
+  border-radius: .6rem;
+  border: 1px solid transparent;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.nav a:hover { background: #e2e8f0; border-color: #cbd5e1; }
+.nav a.active { background: #0f172a; color: #ffffff; }
+
+/* ========== Headings, paragraphs ========== */
+h1, h2, h3 { color: #0f172a; line-height: 1.25; }
+p { margin: 0 0 1rem; }
+
+/* ========== Content sections demonstrate the box model ========== */
+section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;       /* border (part of box model) */
+  border-radius: 12px;
+  padding: 1rem;                    /* padding (inside border) */
+  margin: 0 0 1.25rem;              /* margin (outside border) */
+}
+
+/* ========== Images ========== */
+img { max-width: 100%; height: auto; display: block; }
+
+/* ========== Gallery grid (for gallery.html) ========== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.gallery img {
+  border: 2px solid #e2e8f0;      /* border */
+  border-radius: 10px;
+  padding: .25rem;                 /* padding */
+  background: #ffffff;
+}
+
+/* ========== Footer ========== */
+#site-footer {
+  text-align: center;
+  color: #475569;
+  padding: 2rem 0;
+  font-size: .95rem;
+}
