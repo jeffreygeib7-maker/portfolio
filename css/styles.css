@@ -1,98 +1,151 @@
 /*
   Author: Jeffrey Geib
-  Date: 2025-09-24
+  Date: 2025-10-01
   File: css/styles.css
-  Description: Shared external stylesheet controlling typography, colors, layout, nav, and images.
+  Description:
+    - Liquid, responsive layout using CSS Grid + Flexbox
+    - One shared stylesheet for all pages (header, nav, content, footer)
+    - Demonstrates the box model, a styled UL nav, a responsive table, and a responsive gallery
 */
 
-/* ========== Base / Resets ========== */
+/* ========== Base / Tokens ========== */
 * { box-sizing: border-box; }
+:root{
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --accent:#0f172a;
+  --gutter: 1rem;               /* horizontal padding */
+  --maxw: 72rem;                /* ~1152px, just a comfortable cap */
+}
 html { font-size: 16px; }
 body {
   margin: 0;
-  padding: 0 1rem;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: #0f172a;                 /* text color */
-  background: #f8fafc;            /* page background */
+  color: var(--text);
+  background: var(--bg);
   line-height: 1.6;
 }
 
-/* ========== Layout shells (IDs) ========== */
-#site-header, #primary-nav, #content, #site-footer {
-  max-width: 960px;
-  margin: 0 auto;
+/*
+  Liquid "frame":
+  - width: 100% (liquid)
+  - max-width: var(--maxw) to keep line lengths readable on huge screens
+  - side padding uses --gutter
+*/
+.frame {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
+/* ========== Header ========== */
 #site-header {
   text-align: center;
   padding: 2rem 0 1rem;
 }
+.site-title { margin: .25rem 0; font-size: 1.8rem; font-weight: 600; }
+.tagline { margin: 0; color: var(--muted); }
+.brand img { display:block; margin: 0 auto; height: auto; }
 
-.site-title {                 /* class selector */
-  margin: .25rem 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-.tagline { margin: 0; color: #475569; }
-
-/* ========== Navigation (styled UL) ========== */
-.nav {                         /* class on <ul> */
+/* ========== Navigation (UL-based, styled) ========== */
+#primary-nav { margin-block: .75rem 2rem; }
+.nav {
   list-style: none;
-  margin: .75rem 0 2rem;
-  padding: 0;
+  padding: 0; margin: 0;
   display: flex;
   gap: .5rem;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap;               /* wraps on small screens (liquid) */
 }
-
-.nav a {                       /* element selector */
-  display: inline-block;
-  text-decoration: none;
-  color: #0f172a;
+.nav a{
+  display:inline-block;
+  text-decoration:none;
+  color: var(--text);
   padding: .5rem .9rem;
   border-radius: .6rem;
   border: 1px solid transparent;
   transition: background .2s, color .2s, border-color .2s;
 }
+.nav a:hover{ background:#e2e8f0; border-color:#cbd5e1; }
+.nav a.active{ background: var(--accent); color:#fff; }
 
-.nav a:hover { background: #e2e8f0; border-color: #cbd5e1; }
-.nav a.active { background: #0f172a; color: #ffffff; }
-
-/* ========== Headings, paragraphs ========== */
-h1, h2, h3 { color: #0f172a; line-height: 1.25; }
-p { margin: 0 0 1rem; }
-
-/* ========== Content sections demonstrate the box model ========== */
-section {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;       /* border (part of box model) */
+/* ========== Global content shells ========== */
+#content { margin-block: 0 2rem; }
+section{
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 1rem;                    /* padding (inside border) */
-  margin: 0 0 1.25rem;              /* margin (outside border) */
+  padding: 1rem;
+  margin: 0 0 1.25rem;
 }
-
-/* ========== Images ========== */
+h1,h2,h3 { color: var(--text); line-height: 1.25; margin: .5rem 0 .75rem; }
+p { margin: 0 0 1rem; }
 img { max-width: 100%; height: auto; display: block; }
 
-/* ========== Gallery grid (for gallery.html) ========== */
-.gallery {
+/* ========== Index/Homepage layout ========== */
+/*
+  Liquid Grid: columns auto-fit based on available width.
+  minmax(18rem, 1fr) means:
+  - Each column is at least ~288px (18rem) but can stretch up to an equal fraction (1fr).
+*/
+.home-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1rem;
 }
 
-.gallery img {
-  border: 2px solid #e2e8f0;      /* border */
+/* ========== About/Contact: responsive table ========== */
+.table-wrap { overflow-x: auto; } /* Avoid horizontal scroll on tiny screens */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;           /* visual only; collapse hides outer radius */
+}
+th, td {
+  text-align: left;
+  padding: .75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+thead th {
+  background: #f1f5f9;           /* subtle header background */
+  font-weight: 600;
+}
+tbody tr:last-child td { border-bottom: none; }
+
+/* ========== Gallery grid ========== */
+/*
+  At least two dynamic columns; this creates many columns as space allows,
+  and gracefully drops to fewer columns as the viewport narrows (liquid).
+*/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+.gallery img{
+  border: 2px solid var(--line);
   border-radius: 10px;
-  padding: .25rem;                 /* padding */
-  background: #ffffff;
+  padding: .25rem;
+  background: #fff;
 }
 
 /* ========== Footer ========== */
-#site-footer {
-  text-align: center;
-  color: #475569;
+#site-footer{
+  text-align:center;
+  color: var(--muted);
   padding: 2rem 0;
   font-size: .95rem;
+}
+
+/* ========== Small enhancements for very narrow screens ========== */
+@media (max-width: 22rem){ /* ~352px */
+  .site-title { font-size: 1.4rem; }
+  .nav a { padding: .4rem .7rem; }
 }

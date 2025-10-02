@@ -17,34 +17,63 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header id="site-header">
-    <a class="brand" href="index.html">
-      <img src="img/logo.png" alt="Logo" width="72" height="72">
-    </a>
-    <h1 class="site-title">Jeffrey Geib</h1>
-    <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
-  </header>
+  <div class="frame">
+    <header id="site-header">
+      <a class="brand" href="index.html"><img src="img/logo.png" alt="Logo" width="72" height="72"></a>
+      <h1 class="site-title">Jeffrey Geib</h1>
+      <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
+    </header>
 
-  <nav id="primary-nav" aria-label="Primary">
-    <ul class="nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="interests.html">Interests</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <nav id="primary-nav" aria-label="Primary">
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="interests.html">Interests</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-  <main id="content">
+  <main id="content" class="frame">
     <article>
       <section>
         <h2>About Me</h2>
-        <p>I’m Jeffrey, an IT student focused on cybersecurity.</p>
+        <p>I’m Jeffrey, an IT student focused on cybersecurity. I enjoy hands-on labs, packet analysis, and practical projects.</p>
+      </section>
+
+      <!-- Table requirement (3+ rows, 2+ columns, with <th> header row) -->
+      <section aria-labelledby="skills">
+        <h2 id="skills">Core Skills</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Networking</td>
+                <td>IP addressing, subnetting, VLANs, segmentation</td>
+              </tr>
+              <tr>
+                <td>Security</td>
+                <td>Threat basics, secure configuration, authentication best practices</td>
+              </tr>
+              <tr>
+                <td>Tools</td>
+                <td>Wireshark, Splunk (intro), Git/GitHub, VS Code</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
     </article>
   </main>
 
-  <footer id="site-footer">
+  <footer id="site-footer" class="frame">
     <p>&copy; <span id="year"></span> Jeffrey Geib</p>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>

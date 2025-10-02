@@ -17,42 +17,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header id="site-header">
-    <a class="brand" href="index.html">
-      <img src="img/logo.png" alt="Logo" width="72" height="72">
-    </a>
-    <h1 class="site-title">Jeffrey Geib</h1>
-    <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
-  </header>
+  <div class="frame">
+    <header id="site-header">
+      <a class="brand" href="index.html"><img src="img/logo.png" alt="Logo" width="72" height="72"></a>
+      <h1 class="site-title">Jeffrey Geib</h1>
+      <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
+    </header>
 
-  <nav id="primary-nav" aria-label="Primary">
-    <ul class="nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="interests.html" class="active">Interests</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <nav id="primary-nav" aria-label="Primary">
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="interests.html" class="active">Interests</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-  <main id="content">
-    <article>
-        <section>
-            <h2>My Interests</h2>
-            <p>
-      I’m interested in protecting networks and data. I like studying how attacks work
-      and how to defend against them using practical tools and good design.
-            </p>
-            <ul>
-                <li>Network segmentation & security</li>
-                <li>Digital forensics & log analysis</li>
-                <li>Automating tasks with Python</li>
-            </ul>
-        </section>
+  <main id="content" class="frame">
+    <article class="home-grid">
+      <section>
+        <h2>My Interests</h2>
+        <p>I’m interested in protecting networks and data. I like studying how attacks work and how to defend against them.</p>
+        <ul>
+          <li>Network segmentation & secure IP addressing</li>
+          <li>Digital forensics & log analysis</li>
+          <li>Automating routine tasks with Python</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Recent Learning</h2>
+        <p>Hands-on labs with Wireshark and basic Splunk searches; building small projects in HTML/CSS/JS.</p>
+      </section>
     </article>
   </main>
 
-  <footer id="site-footer">
+  <footer id="site-footer" class="frame">
     <p>&copy; <span id="year"></span> Jeffrey Geib</p>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>

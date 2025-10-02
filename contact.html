@@ -17,36 +17,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header id="site-header">
-    <a class="brand" href="index.html">
-      <img src="img/logo.png" alt="Logo" width="72" height="72">
-    </a>
-    <h1 class="site-title">Jeffrey Geib</h1>
-    <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
-  </header>
+  <div class="frame">
+    <header id="site-header">
+      <a class="brand" href="index.html"><img src="img/logo.png" alt="Logo" width="72" height="72"></a>
+      <h1 class="site-title">Jeffrey Geib</h1>
+      <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
+    </header>
 
-  <nav id="primary-nav" aria-label="Primary">
-    <ul class="nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="interests.html">Interests</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-  </nav>
+    <nav id="primary-nav" aria-label="Primary">
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="interests.html">Interests</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 
-  <main id="content">
-    <article>
+  <main id="content" class="frame">
+    <article class="home-grid">
       <section>
         <h2>Contact</h2>
         <p>Email: <a href="mailto:jeffrey.geib7@yahoo.com">jeffrey.geib7@yahoo.com</a></p>
         <p>Location: Rossville, GA</p>
         <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add later</a></p>
       </section>
+      <section>
+        <h2>Availability</h2>
+        <p>I typically respond within 1–2 business days.</p>
+      </section>
     </article>
   </main>
 
-  <footer id="site-footer">
+  <footer id="site-footer" class="frame">
     <p>&copy; <span id="year"></span> Jeffrey Geib</p>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
