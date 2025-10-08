@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    Author: Jeffrey Geib
+    Date: 2025-10-08
+    File: gallery.html
+    Description: Gallery page with responsive image grid and embedded video.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Jeffrey Geib Portfolio</title>
+
+  <!-- Link to shared CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header id="site-header">
+    <a class="brand" href="index.html">
+      <img src="img/logo.png" alt="JG logo" width="96" height="96">
+    </a>
+    <h1 class="site-title">Jeffrey Geib</h1>
+    <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
+  </header>
+
+  <!-- ================= NAVIGATION ================= -->
+  <nav id="primary-nav" aria-label="Primary">
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="interests.html">Interests</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main id="content" class="frame">
+    <article>
+      <!-- GALLERY IMAGES -->
+      <section aria-labelledby="gal">
+        <h2 id="gal">Project Gallery</h2>
+
+        <!-- A4: Thumbnails open same file full-size in new tab -->
+        <div class="gallery thumbs">
+          <a href="img/gallery1.jpg" target="_blank" rel="noopener">
+            <img src="img/gallery1.jpg" alt="Tech Image 1">
+          </a>
+          <a href="img/gallery2.jpg" target="_blank" rel="noopener">
+            <img src="img/gallery2.jpg" alt="Tech Image 2">
+          </a>
+          <a href="img/gallery3.jpg" target="_blank" rel="noopener">
+            <img src="img/gallery3.jpg" alt="Tech Image 3">
+          </a>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section aria-labelledby="vid" class="media-block">
+        <h2 id="vid">Project Video (Video)</h2>
+        <!-- A4: HTML5 video with controls -->
+        <video controls preload="metadata">
+          <source src="media/intro.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </section>
+    </article>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="site-footer">
+    <p>&copy; <span id="year"></span> Jeffrey Geib •
+      <a href="mailto:jeffrey.geib7@yahoo.com">jeffrey.geib7@yahoo.com</a>
+    </p>
+    <address>Rossville, GA</address>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+
+</body>
+</html>

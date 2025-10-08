@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    Author: Jeffrey Geib
+    Date: 2025-09-24
+    File: contact.html
+    Description: Contact page for portfolio site.
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Jeffrey Geib</title>
+
+  <!-- Link the CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="frame">
+    <header id="site-header">
+      <a class="brand" href="index.html"><img src="img/logo.png" alt="Logo" width="72" height="72"></a>
+      <h1 class="site-title">Jeffrey Geib</h1>
+      <p class="tagline">IT Student & Aspiring Cybersecurity Professional</p>
+    </header>
+
+    <nav id="primary-nav" aria-label="Primary">
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="interests.html">Interests</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="content" class="frame">
+    <article class="home-grid">
+      <section>
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:jeffrey.geib7@yahoo.com">jeffrey.geib7@yahoo.com</a></p>
+        <p>Location: Rossville, GA</p>
+        <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add later</a></p>
+      </section>
+      <section>
+        <h2>Availability</h2>
+        <p>I typically respond within 1–2 business days.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer id="site-footer" class="frame">
+    <p>&copy; <span id="year"></span> Jeffrey Geib</p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>

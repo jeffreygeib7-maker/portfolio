@@ -1,0 +1,208 @@
+/*
+  Author: Jeffrey Geib
+  Date: 2025-10-01
+  File: css/styles.css
+  Description:
+    - Liquid, responsive layout using CSS Grid + Flexbox
+    - One shared stylesheet for all pages (header, nav, content, footer)
+    - Demonstrates the box model, a styled UL nav, a responsive table, and a responsive gallery
+*/
+
+/* ========== Base / Tokens ========== */
+* { box-sizing: border-box; }
+:root{
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --accent:#0f172a;
+  --gutter: 1rem;               /* horizontal padding */
+  --maxw: 72rem;                /* ~1152px, just a comfortable cap */
+}
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+/*
+  Liquid "frame":
+  - width: 100% (liquid)
+  - max-width: var(--maxw) to keep line lengths readable on huge screens
+  - side padding uses --gutter
+*/
+.frame {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ========== Header ========== */
+#site-header {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+.site-title { margin: .25rem 0; font-size: 1.8rem; font-weight: 600; }
+.tagline { margin: 0; color: var(--muted); }
+.brand img { display:block; margin: 0 auto; height: auto; }
+
+/* ========== Navigation (UL-based, styled) ========== */
+#primary-nav { margin-block: .75rem 2rem; }
+.nav {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  flex-wrap: wrap;               /* wraps on small screens (liquid) */
+}
+.nav a{
+  display:inline-block;
+  text-decoration:none;
+  color: var(--text);
+  padding: .5rem .9rem;
+  border-radius: .6rem;
+  border: 1px solid transparent;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.nav a:hover{ background:#e2e8f0; border-color:#cbd5e1; }
+.nav a.active{ background: var(--accent); color:#fff; }
+
+/* ========== Global content shells ========== */
+#content { margin-block: 0 2rem; }
+section{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 0 1.25rem;
+}
+h1,h2,h3 { color: var(--text); line-height: 1.25; margin: .5rem 0 .75rem; }
+p { margin: 0 0 1rem; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ========== Index/Homepage layout ========== */
+/*
+  Liquid Grid: columns auto-fit based on available width.
+  minmax(18rem, 1fr) means:
+  - Each column is at least ~288px (18rem) but can stretch up to an equal fraction (1fr).
+*/
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+/* ========== About/Contact: responsive table ========== */
+.table-wrap { overflow-x: auto; } /* Avoid horizontal scroll on tiny screens */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;           /* visual only; collapse hides outer radius */
+}
+th, td {
+  text-align: left;
+  padding: .75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+thead th {
+  background: #f1f5f9;           /* subtle header background */
+  font-weight: 600;
+}
+tbody tr:last-child td { border-bottom: none; }
+
+/* ========== Gallery grid ========== */
+/*
+  At least two dynamic columns; this creates many columns as space allows,
+  and gracefully drops to fewer columns as the viewport narrows (liquid).
+*/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+.gallery img{
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: .25rem;
+  background: #fff;
+}
+
+/* ========== Footer ========== */
+#site-footer{
+  text-align:center;
+  color: var(--muted);
+  padding: 2rem 0;
+  font-size: .95rem;
+}
+
+/* ========== Small enhancements for very narrow screens ========== */
+@media (max-width: 22rem){ /* ~352px */
+  .site-title { font-size: 1.4rem; }
+  .nav a { padding: .4rem .7rem; }
+}
+/* ==================== A4: Media (thumbnails, video, audio, embeds) ==================== */
+/* Thumbnails: reuse your .gallery grid from A3, but make each image a clickable card */
+.gallery.thumbs a {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .35rem;
+  background: #fff;
+  transition: transform .15s ease;
+}
+.gallery.thumbs a:hover { transform: scale(1.02); }
+
+/* Ensure images inside anchors scale correctly */
+.gallery.thumbs img { display: block; width: 100%; height: auto; }
+
+/* Video/Audio container that matches your site cards */
+.media-block {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Make HTML5 <video> responsive but not huge on wide monitors */
+.media-block video {
+  width: 100%;
+  max-width: 800px;   /* adjust between ~700–900px if you like */
+  display: block;
+  margin: 0 auto;     /* center the video within the card */
+  /* Optional: keep a 16:9 height if your source is widescreen */
+  /* aspect-ratio: 16 / 9; */
+}
+
+/* Make HTML5 <audio> full width of its container */
+.media-block audio {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Responsive YouTube embed: keeps 16:9 without JS */
+.video-embed {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+  margin: 0 0 1.25rem;
+}
+.video-embed iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    Author: Jeffrey Geib
+    Date: 2025-09-24
+    File: template.html
+    Description: Shared layout template (no page-specific content).
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeffrey Geib | Template</title>
+</head>
+<body>
+  <!-- Header: shared across pages -->
+  <header>
+    <a href="index.html">
+      <img src="img/logo.png" alt="JG logo" width="96" height="96">
+    </a>
+    <h1>Jeffrey Geib</h1>
+    <p>IT Student & Aspiring Cybersecurity Professional</p>
+  </header>
+
+  <!-- Navigation: shared across pages -->
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resume.html">Résumé</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content: intentionally blank for reuse -->
+  <article>
+    <section aria-labelledby="page-heading">
+      <h2 id="page-heading">Page Heading</h2>
+      <!-- Developer: Add page-specific content here when creating new pages -->
+    </section>
+  </article>
+
+  <!-- Footer: shared across pages -->
+  <footer>
+    <p>&copy; <span id="year"></span> Jeffrey Geib</p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
