@@ -203,6 +203,6 @@ tbody tr:last-child td { border-bottom: none; }
 .video-embed iframe {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   border: 0;
 }
