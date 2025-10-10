@@ -206,3 +206,84 @@ tbody tr:last-child td { border-bottom: none; }
   aspect-ratio: 16/9;
   border: 0;
 }
+/* ==================== A5: Form styles ==================== */
+
+form {
+  display: block;
+  margin: 0 0 1.25rem;
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 0 1rem;
+  background: var(--panel);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 .5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 12rem 1fr; /* label column + input column */
+  gap: .75rem;
+  align-items: start;
+  margin: 0 0 .9rem;
+}
+
+.form-row .label { /* for grouped radios/checkboxes */
+  font-weight: 600;
+}
+
+.form-row label {
+  font-weight: 600;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: .6rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+}
+
+.options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-actions {
+  margin-top: 1rem;
+}
+
+.form-actions button[type="submit"] {
+  appearance: none;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-actions button[type="submit"]:hover {
+  filter: brightness(1.05);
+}
+
+/* Narrow screens: label above inputs */
+@media (max-width: 40rem) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+

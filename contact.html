@@ -35,24 +35,88 @@
     </nav>
   </div>
 
-  <main id="content" class="frame">
-    <article class="home-grid">
-      <section>
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:jeffrey.geib7@yahoo.com">jeffrey.geib7@yahoo.com</a></p>
-        <p>Location: Rossville, GA</p>
-        <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add later</a></p>
-      </section>
-      <section>
-        <h2>Availability</h2>
-        <p>I typically respond within 1–2 business days.</p>
-      </section>
-    </article>
-  </main>
+  <article>
+    <!-- A5: Contact form with all required inputs -->
+    <section aria-labelledby="contact-form">
+      <h2 id="contact-form">Contact Me</h2>
+
+      <!-- A5: The form MUST have id="webForm" and action="#" (no GET/POST handling) -->
+      <form id="webForm" action="#">
+        <!-- Fieldset 1: Your Info -->
+        <fieldset>
+          <legend>Your Information</legend>
+
+          <!-- Textfield: Full name -->
+          <div class="form-row">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Your name">
+          </div>
+
+          <!-- Textfield: Email -->
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com">
+          </div>
+
+          <!-- Select list: Topic -->
+          <div class="form-row">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic" required>
+              <option value="">Please choose…</option>
+              <option value="general">General question</option>
+              <option value="project">Project inquiry</option>
+              <option value="speaking">Speaking / event</option>
+            </select>
+          </div>
+        </fieldset>
+        <!-- Fieldset 2: Preferences (radio + checkboxes) -->
+        <fieldset>
+          <legend>Contact Preferences</legend>
+
+          <!-- Radio buttons: Preferred contact method (same name="contactMethod") -->
+          <div class="form-row">
+            <span class="label">Preferred Method</span>
+            <div class="options">
+              <label><input type="radio" name="contactMethod" value="email" checked> Email</label>
+              <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
+            </div>
+          </div>
+
+          <!-- Checkboxes: Best times -->
+          <div class="form-row">
+            <span class="label">Best Times</span>
+            <div class="options">
+              <label><input type="checkbox" name="bestTimes" value="morning"> Morning</label>
+              <label><input type="checkbox" name="bestTimes" value="afternoon"> Afternoon</label>
+              <label><input type="checkbox" name="bestTimes" value="evening"> Evening</label>
+            </div>
+          </div>
+        </fieldset>
+        <!-- Fieldset 3: Message -->
+        <fieldset>
+          <legend>Your Message</legend>
+          <!-- Textarea -->
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="How can I help?"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Submit button -->
+        <div class="form-actions">
+          <button type="submit">Send</button>
+        </div>
+      </form>
+      <!-- A5: Output area (exact id REQUIRED) -->
+      <p><div id="output"></div></p>
+    </section>
+  </article>
+
 
   <footer id="site-footer" class="frame">
     <p>&copy; <span id="year"></span> Jeffrey Geib</p>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
